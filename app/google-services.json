@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "368301684534",
+    "firebase_url": "https://fixapp-125e6.firebaseio.com",
+    "project_id": "fixapp-125e6",
+    "storage_bucket": "fixapp-125e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368301684534:android:0c97717e28febac0d1e597",
+        "android_client_info": {
+          "package_name": "com.geight.fix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368301684534-qvc2sh5rlm2l12hjajl799f7mbf96a52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUHs_ZS-URWFI-IAEsGJFtsjRII23bU5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368301684534-qvc2sh5rlm2l12hjajl799f7mbf96a52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.geight.fix.com.geight.fix.Cliente
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.*
 import com.google.firebase.database.FirebaseDatabase
 
 class RegistroCliente : AppCompatActivity() {
@@ -65,12 +66,9 @@ class RegistroCliente : AppCompatActivity() {
         }
 
         //FirebaseDatabase db = FirebaseDatabase.getInstance()
-        val ref = FirebaseDatabase.getInstance().getReference("Clientes")
-        val clienteFBID : String = ref.push().key.toString()
-        val cliente = Cliente(clienteFBID, id, nombres, apellidos, email, contrasena)
-        buttonRegistrar.setOnClickListener {
+        /*buttonRegistrar.setOnClickListener {
             if (editTextCorreo.text.isNotEmpty() && editTextContrasena.text.isNotEmpty()){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, contrasena).addOnCompleteListener {
+                getInstance().createUserWithEmailAndPassword(email, contrasena).addOnCompleteListener {
                     if(it.isSuccessful){
                         mostrarHome(it.result?.user?.email ?: "")
                     }else{
@@ -79,16 +77,34 @@ class RegistroCliente : AppCompatActivity() {
                 }
 
             }
+        }*/
+
+                buttonRegistrar.setOnClickListener {
+            if (editTextCorreo.text.isNotEmpty() && editTextContrasena.text.isNotEmpty()){
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, contrasena).addOnCompleteListener {
+                    mostrarLogin()
+                    if(it.isSuccessful){
+                        val ref = FirebaseDatabase.getInstance().getReference("Clientes")
+                        val clienteFBID : String = ref.push().key.toString()
+                        val cliente = Cliente(clienteFBID, id, nombres, apellidos, email, contrasena)
+
+                        ref.child(clienteFBID).setValue(cliente).addOnCompleteListener {
+                            Toast.makeText(applicationContext, "Usuario registrado", Toast.LENGTH_LONG).show()
+                        }
+                        mostrarLogin()
+                    }else{
+                        buttonRegistrar.error = "Datos no válidos"
+                    }
+
+                }
+            }
         }
-        ref.child(clienteFBID).setValue(cliente).addOnCompleteListener {
-            Toast.makeText(applicationContext, "Usuario registrado", Toast.LENGTH_LONG).show()
-        }
+
     }
 
-    private fun mostrarHome(email: String) {
-        val homeIntent = Intent(this, HomeActivity::class.java).apply{
-            putExtra("email", email);
+    private fun mostrarLogin() {
+        val loginIntent = Intent(this, LoginActivity::class.java).apply{
         }
-        startActivity(homeIntent)
+        startActivity(loginIntent)
     }
 }

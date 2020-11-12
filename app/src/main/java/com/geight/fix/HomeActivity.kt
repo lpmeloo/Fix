@@ -8,24 +8,20 @@ import android.widget.EditText
 import android.widget.TextView
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var emailTextView: TextView
+    //lateinit var emailTextView: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        emailTextView= findViewById(R.id.emailTextView)
-
+        /*emailTextView= findViewById(R.id.emailTextView)
         val bundle: Bundle? = intent.extras
-        val email = bundle?.getString("email")
-        setup( email ?: "")
-
+        val email = bundle?.getString( "email")
+        setup( email ?: "")*/
     }
 
-    private fun setup(email:String) {
+    /*private fun setup(email: String) {
         title = "Home"
         emailTextView.text = email
         onBackPressed()
-    }
-
-
+    }*/
 }

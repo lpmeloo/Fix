@@ -27,29 +27,23 @@ class LoginActivity : AppCompatActivity() {
     private fun setup() {
         title = "Autentificación"
 
-        //Registro de clientes usando firebase
-        /*buttonRegistrarLogin.setOnClickListener {
-            if (editTextEmail.text.isNotEmpty() && editTextContrasenaLogin.text.isNotEmpty()){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(editTextEmail.text.toString(), editTextContrasenaLogin.text.toString()).addOnCompleteListener {
-                    if(it.isSuccessful){
-                        mostrarHome(it.result?.user?.email ?: "")
-                    }else{
-                        buttonLogin.error = "Debes ingresar tu nombre"
-                    }
-                }
-
-            }
-        }*/
-
         //Registro de cliente 'manual'
         buttonRegistrarLogin.setOnClickListener {
             mostrarRegistroC()
         }
 
-
         buttonLogin.setOnClickListener {
-            if (editTextEmail.text.isNotEmpty() && editTextContrasenaLogin.text.isNotEmpty()){
+            //mostrarHome(editTextEmail.text.toString())
+            if (editTextContrasenaLogin.text.isNotEmpty() && editTextEmail.text.isNotEmpty() ||
+                    editTextContrasenaLogin.text.equals("Contraseña") || editTextEmail.text.equals("Email")){
+                mostrarHome()
+            }else{
+                buttonLogin.error = "Debes ingresar tu nombre y contraseña"
+            }
+
+            /*if (editTextEmail.text.isNotEmpty() && editTextContrasenaLogin.text.isNotEmpty()){
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(editTextEmail.text.toString(), editTextContrasenaLogin.text.toString()).addOnCompleteListener {
+                    //mostrarHome(it.result?.user?.email ?: "")
                     if(it.isSuccessful){
                         mostrarHome(it.result?.user?.email ?: "")
                     }else{
@@ -57,13 +51,20 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
 
-            }
+            }*/
         }
+
     }
 
     private fun mostrarHome(email: String) {
         val homeIntent = Intent(this, HomeActivity::class.java).apply{
-            putExtra("email", email);
+            putExtra("email", email)
+        }
+        startActivity(homeIntent)
+    }
+
+    private fun mostrarHome() {
+        val homeIntent = Intent(this, HomeActivity::class.java).apply{
         }
         startActivity(homeIntent)
     }

@@ -25,8 +25,7 @@
             android:layout_height="40dp"
             android:text="Bienvenido"
             android:textAlignment="center"
-            android:textSize="18sp"
-            tools:text="Email" />
+            android:textSize="18sp" />
 
         <Space
             android:layout_width="match_parent"

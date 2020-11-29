@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.Toast
 import com.geight.fix.com.geight.fix.Cliente
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuth.*
 import com.google.firebase.database.FirebaseDatabase
 
 class RegistroCliente : AppCompatActivity() {
@@ -19,6 +18,8 @@ class RegistroCliente : AppCompatActivity() {
     lateinit var editTextCorreo: EditText
     lateinit var editTextContrasena: EditText
     lateinit var buttonRegistrar: Button
+    lateinit var fAuth: FirebaseAuth
+    lateinit var db: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,14 +31,16 @@ class RegistroCliente : AppCompatActivity() {
         editTextCorreo = findViewById(R.id.editTextCorreo)
         editTextContrasena = findViewById(R.id.editTextContrasena)
         buttonRegistrar = findViewById(R.id.buttonRegistrar)
+        fAuth = FirebaseAuth.getInstance()
+        db = FirebaseDatabase.getInstance()
 
         buttonRegistrar.setOnClickListener {
             registrarCliente()
         }
-
     }
 
     private fun registrarCliente(){
+
         val id = editTextID.text.toString().trim()
         val nombres = editTextNombres.text.toString().trim()
         val apellidos = editTextApellidos.text.toString().trim()
@@ -60,47 +63,30 @@ class RegistroCliente : AppCompatActivity() {
             editTextCorreo.error = "Debes ingresar tu correo"
             return
         }
-        if(contrasena.isEmpty()){
-            editTextContrasena.error = "Debes establecer una contrasena"
+        if(contrasena.isEmpty() || contrasena.length < 6){
+            editTextContrasena.error = "Debes establecer una contraseña de al menos 6 caracteres"
             return
         }
 
-        //FirebaseDatabase db = FirebaseDatabase.getInstance()
-        /*buttonRegistrar.setOnClickListener {
-            if (editTextCorreo.text.isNotEmpty() && editTextContrasena.text.isNotEmpty()){
-                getInstance().createUserWithEmailAndPassword(email, contrasena).addOnCompleteListener {
-                    if(it.isSuccessful){
-                        mostrarHome(it.result?.user?.email ?: "")
-                    }else{
-                        buttonRegistrar.error = "Hay campos sin llenar"
+        if (email.isNotEmpty() && contrasena.isNotEmpty()){
+            fAuth.createUserWithEmailAndPassword(email, contrasena).addOnCompleteListener {
+                if(it.isSuccessful){
+                    val ref = db.getReference("Clientes")
+                    val clienteFBID : String = ref.push().key.toString()
+                    val cliente = Cliente(clienteFBID, id, nombres, apellidos, email, contrasena)
+
+                    ref.child(clienteFBID).setValue(cliente).addOnCompleteListener {
+                        Toast.makeText(applicationContext, "Usuario registrado", Toast.LENGTH_LONG).show()
                     }
-                }
-
-            }
-        }*/
-
-                buttonRegistrar.setOnClickListener {
-            if (editTextCorreo.text.isNotEmpty() && editTextContrasena.text.isNotEmpty()){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, contrasena).addOnCompleteListener {
                     mostrarLogin()
-                    if(it.isSuccessful){
-                        val ref = FirebaseDatabase.getInstance().getReference("Clientes")
-                        val clienteFBID : String = ref.push().key.toString()
-                        val cliente = Cliente(clienteFBID, id, nombres, apellidos, email, contrasena)
-
-                        ref.child(clienteFBID).setValue(cliente).addOnCompleteListener {
-                            Toast.makeText(applicationContext, "Usuario registrado", Toast.LENGTH_LONG).show()
-                        }
-                        mostrarLogin()
-                    }else{
-                        buttonRegistrar.error = "Datos no válidos"
-                    }
-
+                }else{
+                    buttonRegistrar.error = "Datos inválidos"
                 }
+
             }
         }
+     }
 
-    }
 
     private fun mostrarLogin() {
         val loginIntent = Intent(this, LoginActivity::class.java).apply{

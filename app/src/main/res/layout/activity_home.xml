@@ -23,17 +23,12 @@
             android:id="@+id/emailTextView"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Bienvenido"
             android:textAlignment="center"
             android:textSize="18sp" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

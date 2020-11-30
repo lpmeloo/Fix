@@ -10,4 +10,21 @@
     <string name="nombres">Nombres</string>
     <string name="apellidos">Apellidos</string>
     <string name="cliente">CLIENTE</string>
+    <string name="electro">Image</string>
+    <string name="cell">Image</string>
+    <string name="pc">Image</string>
+    <string name="sonido">Image</string>
+    <string name="impresoras">Image</string>
+    <string name="televisor">Image</string>
+    <string name="accesorios">Image</string>
+    <string name="electrodomesticos">Electrodomésticos</string>
+    <string name="celulares">Celulares</string>
+    <string name="computadores">Computadores</string>
+    <string name="sonidos">Equipos de Sonido</string>
+    <string name="impresora">Impresoras y faxes</string>
+    <string name="televisores">Televisores</string>
+    <string name="accesorio">Accesorios y más</string>
+    <string name="cerrar">Cerrar sesión</string>
+    <string name="titulocategorias">CATEGORÍAS</string>
+
 </resources>

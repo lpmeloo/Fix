@@ -43,18 +43,6 @@ class LoginActivity : AppCompatActivity() {
             }else{
                 buttonLogin.error = "Debes ingresar tu nombre y contraseña"
             }
-
-            /*if (editTextEmail.text.isNotEmpty() && editTextContrasenaLogin.text.isNotEmpty()){
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(editTextEmail.text.toString(), editTextContrasenaLogin.text.toString()).addOnCompleteListener {
-                    //mostrarHome(it.result?.user?.email ?: "")
-                    if(it.isSuccessful){
-                        mostrarHome(it.result?.user?.email ?: "")
-                    }else{
-                        buttonLogin.error = "Debes ingresar tu nombre"
-                    }
-                }
-
-            }*/
         }
 
     }

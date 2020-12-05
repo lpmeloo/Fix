@@ -51,7 +51,8 @@ class LoginActivity : AppCompatActivity() {
                 fAuth.signInWithEmailAndPassword(email, contrasena).addOnCompleteListener {
                     //mostrarHome(it.result?.user?.email ?: "")
                     if(it.isSuccessful){
-                        mostrarHome(it.result?.user?.email ?: "E-mail desconocido")
+                       // mostrarCategorias(it.result?.user?.email ?: "E-mail desconocido")
+                        mostrarCategorias()
                     }else{
                         buttonLogin.error = "Debes ingresar tu nombre"
                     }
@@ -70,6 +71,12 @@ class LoginActivity : AppCompatActivity() {
         }
         startActivity(homeIntent)
     }*/
+
+    private fun mostrarCategorias() {
+        val catIntent = Intent(this, CategoriasActivity::class.java).apply{
+        }
+        startActivity(catIntent)
+    }
 
     private fun mostrarRegistroC() {
         val registroCIntent = Intent(this, RegistroCliente::class.java).apply{

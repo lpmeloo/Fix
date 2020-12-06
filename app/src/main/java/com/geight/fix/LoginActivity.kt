@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.firebase.ui.auth.data.model.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
     lateinit var buttonLogin: Button
@@ -14,6 +15,8 @@ class LoginActivity : AppCompatActivity() {
     lateinit var editTextEmail: EditText
     lateinit var editTextContrasenaLogin: EditText
     lateinit var fAuth: FirebaseAuth
+    lateinit var db: FirebaseDatabase
+    internal var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         buttonLogin = findViewById(R.id.buttonLogin)
         buttonRegistrarLogin = findViewById(R.id.buttonRegistrarLogin)
         fAuth = FirebaseAuth.getInstance()
+        db = FirebaseDatabase.getInstance()
 
         setup()
     }
@@ -51,12 +55,36 @@ class LoginActivity : AppCompatActivity() {
                 fAuth.signInWithEmailAndPassword(email, contrasena).addOnCompleteListener {
                     //mostrarHome(it.result?.user?.email ?: "")
                     if(it.isSuccessful){
-                        mostrarHome(it.result?.user?.email ?: "E-mail desconocido")
+                        //mostrarHome(it.result?.user?.email ?: "E-mail desconocido")
+
+                        /*var ref = db.getReference("Clientes").addChildEventListener(
+                        )
+                        val menuListener = object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                user = dataSnapshot.getValue() as User
+                                textView.text = user?.email
+                            }
+                            override fun onCancelled(databaseError: DatabaseError) {
+                                // handle error
+                            }
+                        }
+                        ref.addListenerForSingleValueEvent(menuListener)*/
+
+                        mostrarPerfil(it.result?.user?.email ?: "")
+                        //mostrarHome(it.result?.user?.email ?: "")
                     }else{
                         buttonLogin.error = "Debes ingresar tu nombre"
                     }
                 }
+
     }
+
+    /*private fun mostrarHome(email: String) {
+        val homeIntent = Intent(this, HomeActivity::class.java).apply{
+            putExtra("email", email)
+        }
+        startActivity(homeIntent)
+    }*/
 
     private fun mostrarHome(email: String) {
         val homeIntent = Intent(this, HomeActivity::class.java).apply{
@@ -65,11 +93,12 @@ class LoginActivity : AppCompatActivity() {
         startActivity(homeIntent)
     }
 
-    /*private fun mostrarHome() {
-        val homeIntent = Intent(this, HomeActivity::class.java).apply{
+    private fun mostrarPerfil(email: String) {
+        val perfilIntent = Intent(this, PerfilActivity::class.java).apply{
+            putExtra("email", email)
         }
-        startActivity(homeIntent)
-    }*/
+        startActivity(perfilIntent)
+    }
 
     private fun mostrarRegistroC() {
         val registroCIntent = Intent(this, RegistroCliente::class.java).apply{

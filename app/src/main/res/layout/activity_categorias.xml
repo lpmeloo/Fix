@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8E1E1"
+    tools:context=".CategoriasActivity">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="362dp"
+        android:layout_height="644dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/computadoresB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/pc"
+                app:srcCompat="@mipmap/ordenador"
+                tools:layout_editor_absoluteX="240dp"
+                tools:layout_editor_absoluteY="459dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Computadores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/computadores"
+                tools:layout_editor_absoluteX="113dp"
+                tools:layout_editor_absoluteY="38dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/electrodomesticosB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/electro"
+                app:srcCompat="@mipmap/electrodomesticos"
+                tools:layout_editor_absoluteX="244dp"
+                tools:layout_editor_absoluteY="330dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/celularesB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cell"
+                app:srcCompat="@mipmap/carga"
+                tools:layout_editor_absoluteX="72dp"
+                tools:layout_editor_absoluteY="348dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/Electrodomesticos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/electrodomesticos"
+                tools:layout_editor_absoluteX="76dp"
+                tools:layout_editor_absoluteY="64dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Celulares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/celulares" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/televisoresB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/televisor"
+                app:srcCompat="@mipmap/antenas"
+                tools:layout_editor_absoluteX="72dp"
+                tools:layout_editor_absoluteY="125dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Televisores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/televisores"
+                tools:layout_editor_absoluteX="92dp"
+                tools:layout_editor_absoluteY="38dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/impresorasB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/impresoras"
+                app:srcCompat="@mipmap/impresora"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="483dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/accesoriosB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/accesorios"
+                app:srcCompat="@mipmap/reloj"
+                tools:layout_editor_absoluteX="204dp"
+                tools:layout_editor_absoluteY="639dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/Impresora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/impresora"
+                tools:layout_editor_absoluteX="144dp"
+                tools:layout_editor_absoluteY="46dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/Accesorios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/accesorio"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="46dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="90dp">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/sonidoB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/sonido"
+                app:srcCompat="@mipmap/altavoz"
+                tools:layout_editor_absoluteX="220dp"
+                tools:layout_editor_absoluteY="134dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/Sonido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sonidos"
+                tools:layout_editor_absoluteX="306dp"
+                tools:layout_editor_absoluteY="51dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="359dp"
+        android:layout_height="74dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
+
+        <Button
+            android:id="@+id/cerrarB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:text="@string/cerrar"
+            android:textColor="#FFFFFF"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

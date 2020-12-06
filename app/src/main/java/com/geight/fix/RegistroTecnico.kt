@@ -29,7 +29,7 @@ class RegistroTecnico : AppCompatActivity() {
         textInputApellidos = findViewById(R.id.textInputApellidos)
         textInputCorreo = findViewById(R.id.textInputCorreo)
         textInputContrasena = findViewById(R.id.textInputContrasena)
-        buttonRegistrar3 = findViewById(R.id.buttonRegistrar3)
+        buttonRegistrar3 = findViewById(R.id.buttonEditar)
         fAuth = FirebaseAuth.getInstance()
         db = FirebaseDatabase.getInstance()
 

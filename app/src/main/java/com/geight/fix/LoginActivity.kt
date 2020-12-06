@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.firebase.ui.auth.data.model.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
     lateinit var buttonLogin: Button
@@ -14,6 +15,8 @@ class LoginActivity : AppCompatActivity() {
     lateinit var editTextEmail: EditText
     lateinit var editTextContrasenaLogin: EditText
     lateinit var fAuth: FirebaseAuth
+    lateinit var db: FirebaseDatabase
+    internal var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         buttonLogin = findViewById(R.id.buttonLogin)
         buttonRegistrarLogin = findViewById(R.id.buttonRegistrarLogin)
         fAuth = FirebaseAuth.getInstance()
+        db = FirebaseDatabase.getInstance()
 
         setup()
     }
@@ -51,13 +55,21 @@ class LoginActivity : AppCompatActivity() {
                 fAuth.signInWithEmailAndPassword(email, contrasena).addOnCompleteListener {
                     //mostrarHome(it.result?.user?.email ?: "")
                     if(it.isSuccessful){
-                       // mostrarCategorias(it.result?.user?.email ?: "E-mail desconocido")
-                        mostrarCategorias()
+                        mostrarPerfil(it.result?.user?.email ?: "")
+                        //mostrarCategorias()
                     }else{
                         buttonLogin.error = "Debes ingresar tu nombre"
                     }
                 }
+
     }
+
+    /*private fun mostrarHome(email: String) {
+        val homeIntent = Intent(this, HomeActivity::class.java).apply{
+            putExtra("email", email)
+        }
+        startActivity(homeIntent)
+    }*/
 
     private fun mostrarHome(email: String) {
         val homeIntent = Intent(this, HomeActivity::class.java).apply{
@@ -66,11 +78,12 @@ class LoginActivity : AppCompatActivity() {
         startActivity(homeIntent)
     }
 
-    /*private fun mostrarHome() {
-        val homeIntent = Intent(this, HomeActivity::class.java).apply{
+    private fun mostrarPerfil(email: String) {
+        val perfilIntent = Intent(this, PerfilActivity::class.java).apply{
+            putExtra("email", email)
         }
-        startActivity(homeIntent)
-    }*/
+        startActivity(perfilIntent)
+    }
 
     private fun mostrarCategorias() {
         val catIntent = Intent(this, CategoriasActivity::class.java).apply{

@@ -1,5 +1,6 @@
 package com.geight.fix
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -19,5 +20,22 @@ class CategoriasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categorias)
+        accesoriosButton = findViewById(R.id.accesoriosB);
+        setUp()
+
+
+    }
+    private fun setUp() {
+
+        accesoriosButton.setOnClickListener{
+            mostrarAccesorios()
+        }
+    }
+
+
+    private fun mostrarAccesorios() {
+        val homeIntent = Intent(this, ModuloAcActivity::class.java).apply{
+        }
+        startActivity(homeIntent)
     }
 }

@@ -99,7 +99,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="80dp" />
+            android:layout_height="43dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -134,6 +134,13 @@
                 app:iconTint="#FFFFFF"
                 tools:text="ACEPTAR" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonSolicitud"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:text="@string/crear_solicitud"
+            android:textColor="#F4F0F0" />
 
     </LinearLayout>
 

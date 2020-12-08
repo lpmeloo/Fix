@@ -2,6 +2,7 @@
 
 package com.geight.fix
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -24,6 +25,7 @@ class PerfilActivity : AppCompatActivity() {
     lateinit var buttonEditar: Button
     lateinit var buttonAceptar: Button
     lateinit var userFBID: String
+    lateinit var buttonSolicitud :Button
 
     //Firebase variables
     private lateinit var db: FirebaseDatabase
@@ -49,6 +51,7 @@ class PerfilActivity : AppCompatActivity() {
         buttonAceptar.isVisible = false
         textUsuario = findViewById(R.id.textUsuario)
         textUsuario.isVisible = false
+        buttonSolicitud = findViewById(R.id.buttonSolicitud)
 
         //Base de Datos
         db = FirebaseDatabase.getInstance()
@@ -64,9 +67,18 @@ class PerfilActivity : AppCompatActivity() {
             actualizarDatos(userFBID)
             hacerIneditables()
         }
+        buttonSolicitud.setOnClickListener{
+            mostrarCategorias()
+
+        }
     }
 
-    private fun hacerEditables() {
+    private fun mostrarCategorias() {
+        val catIntent = Intent(this, CategoriasActivity::class.java).apply {
+        }
+        startActivity(catIntent)
+    }
+        private fun hacerEditables() {
         textInputNombres.isEnabled = true
         textInputApellidos.isEnabled = true
         buttonAceptar.isVisible = true
